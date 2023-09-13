@@ -96,7 +96,7 @@ jobs:
               sleep 5
               curl -I http://localhost:4173
 
-      - name: Snapshot
+      - name: Snapshot1
         run: |
               mkdir -m 777 gen
               docker run -i --init --cap-add=SYS_ADMIN --network host -v ./gen:/home/pptruser/gen ghcr.io/puppeteer/puppeteer:latest node -e "$(cat snapshot.js)" http://localhost:4173 ./gen
@@ -110,7 +110,7 @@ jobs:
       - name: push to git
         run: |
               git add static
-              git commit -m "Snapshot ${{ github.sha }}"
+              git commit -m "Snapshot1 ${{ github.sha }}"
               git push
 
   deploy:
